@@ -79,6 +79,27 @@ function muestraMapa() {
 //We now call the function
 muestraMapa()
 
+//Music
+//Credits to @Pixverses on YouTube
+var ost = new Audio("./music/Run_As_Fast_As_You_Can.mp3")
+ost.loop = true
+ost.play()
+//Picked from pixaby.com
+var gameStart = new Audio("./music/Game_Start.mp3")
+gameStart.play()
+var keySound = new Audio("./music/Key_Pick_Up.mp3")
+var thump = new Audio("./music/Collision.mp3")
+var win = new Audio ("./music/Win.mp3")
+var gameOverSound = new Audio ("./music/Game_Over.mp3")
+
+//GAME OVER
+ function gameover(){
+  if (timeLeft === 0){
+    console.log("GAME OVER")
+    gameOverSound.play()
+  }
+}
+
 //Score values
 var score = 5000
 var finalScore = document.querySelector(".puntuacion")
@@ -86,8 +107,16 @@ var scoreIndex = document.querySelector("#puntuacion")
 var scoreID = setInterval(()=>{
   score -= 10
   scoreIndex.innerText = score
-  if (timeLeft === 1){
+  if (timeLeft === 0){
     clearInterval(scoreID)
+    ost.pause()
+    //gameover()
+
+    modalGameOver.classList.add("open")
+          
+            closeBtn.addEventListener("click", () => {
+              modalGameOver.classList.remove("open")
+            })
   }
   }, 1000)
 
@@ -100,7 +129,8 @@ var py = 1
 
 const openBtn = document.getElementById("openModal")
 const closeBtn = document.getElementById("closeModal")
-const modal = document.getElementById("modal")
+const modalWin = document.getElementById("modal-win")
+const modalGameOver = document.getElementById("modal-gameOver")
 
 //WASD
 
@@ -118,6 +148,9 @@ const movement = window.addEventListener("keydown", function(e){
             score -= 10
             scoreIndex.innerText = score
 
+            thump.play()
+
+
         } else if (map[px-1][py] === 0){
             //We exchange the value of player's current position (3) to 0 (path) and set its corresponding class.
             map[px][py] = 0
@@ -126,6 +159,8 @@ const movement = window.addEventListener("keydown", function(e){
             map[px-1][py] = 3
             arrayDiv[px-1][py].setAttribute("class", "player")
             px--
+
+           
         }break;
 
         case"a":
@@ -133,6 +168,8 @@ const movement = window.addEventListener("keydown", function(e){
           
             score -= 10
             scoreIndex.innerText = score
+thump.play()
+           
 
         } else if (map[px][py-1] === 0){
           
@@ -151,6 +188,8 @@ const movement = window.addEventListener("keydown", function(e){
           map[px][py-1] = 3
           arrayDiv[px][py-1].setAttribute("class", "player")
           py--
+          keySound.play()
+
           map[6][41] = 0
           arrayDiv[6][41].setAttribute("class", "path")
       }break;
@@ -160,6 +199,7 @@ const movement = window.addEventListener("keydown", function(e){
           
             score -= 10
             scoreIndex.innerText = score
+            thump.play()
             
         } else if (map[px+1][py] === 0){
           
@@ -174,6 +214,7 @@ const movement = window.addEventListener("keydown", function(e){
           
           score -= 10
           scoreIndex.innerText = score
+          thump.play()
         }break;
 
         case"d":
@@ -181,6 +222,7 @@ const movement = window.addEventListener("keydown", function(e){
           
             score -= 10
             scoreIndex.innerText = score
+            thump.play()
             
         } else if (map[px][py+1] === 0){
           
@@ -190,6 +232,8 @@ const movement = window.addEventListener("keydown", function(e){
             map[px][py+1] = 3
             arrayDiv[px][py+1].setAttribute("class", "player")
             py++
+
+            
             
         } else if (map[px][py+1] === 2){
           
@@ -201,20 +245,24 @@ const movement = window.addEventListener("keydown", function(e){
           py++
           onTimesUp()
           clearInterval(scoreID)
+
+          ost.pause()
+          win.play()
+
           finalScore.innerText = score + (timeLeft*10)
           
-         
-          
-          
-            modal.classList.add("open")
+        
+          modalWin.classList.add("open")
           
           closeBtn.addEventListener("click", () => {
-            modal.classList.remove("open")
+            modalWin.classList.remove("open")
           })
+            
 
         }break;
     }
 })
 
 // ---------------------------------------------------------------------
+
 

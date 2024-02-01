@@ -97,13 +97,109 @@ body {
     opacity: 0.1;
 }
 
+/* - -- - -- - -- - -- - -- 
+-- - Estilo botones - --
+- -- - -- - -- - -- - -- - */
+/* Original */
+.boton .btn {
+    width: 140px;
+    height: 50px;
+    border: 0px solid #004a9d;
+    color: #fff;
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background: #faa531;
+}
+
+/* boton portada */
+.bonotes_portada .boton .btn {
+    color: #fff;
+    background: transparent;
+}
+
+.btn-default:active:hover{
+    color: #fff;
+    background-color: transparent;
+    border-color: 0px;
+}
+
+
+
+/* Efecto del botón */
+.hvr-horizontal {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    background: #e1e1e1;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.hvr-horizontal:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #61a49a;
+    border-radius: 4px;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 50%;
+    transform-origin: 50%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+
+.hvr-horizontal:hover,
+.hvr-horizontal:focus,
+.hvr-horizontal:active {
+    color: #fff;
+}
+
+.bonotes_portada .boton .btn:hover,
+.bonotes_portada .boton .btn:focus,
+.bonotes_portada .boton .btn:active {
+    color: #61a49a;
+}
+
+.hvr-horizontal:hover:before,
+.hvr-horizontal:focus:before,
+.hvr-horizontal:active:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+
+
+
+/* - -- - -- - -- - -- - -- 
+-- - Fin Estilo botones - --
+- -- - -- - -- - -- - -- - */
 
 /* ----------------------
 ---------- PORTADA --------
 ------------------------ */
 .main_portada {
     width: 100%;
-    height: calc(100vh - 65px);
+    height: calc(100vh - 66px);
 }
 
 .portada,
@@ -143,35 +239,56 @@ body {
 }
 
 .padre_laberinto .imagen.reloj {
+    width: 100px;
     height: 100px;
+    position: relative;
+}
+
+.padre_laberinto .caja_reloj{
     position: absolute;
     background-position: right;
     top: 43px;
     right: 127px;
 }
 
-.padre_laberinto .imagen.relojito {
-    height: 70px;
+.padre_laberinto .caja_relojito {
     position: absolute;
     background-position: left;
     top: 112px;
     left: 212px;
 }
 
-.padre_laberinto .imagen.relojero {
-    height: 90px;
+.padre_laberinto .imagen.relojito {
+    height: 70px;
+    width: 70px;
+    position: relative;
+}
+
+.padre_laberinto .caja_relojero {
     position: absolute;
     background-position: left;
     bottom: 132px;
     left: 144px;
 }
 
-.padre_laberinto .imagen.relojillo {
-    height: 72px;
+.padre_laberinto .imagen.relojero {
+    height: 90px;
+    width: 90px;
+    position: relative;
+}
+
+.padre_laberinto .caja_relojillo {
     position: absolute;
     background-position: right;
     bottom: 88px;
     right: 226px;
+}
+
+.padre_laberinto .imagen.relojillo {
+    height: 72px;
+    width: 72px;
+    position: relative;
+    
 }
 
 .elemento1 {
@@ -256,7 +373,6 @@ body {
     z-index: -1;
 }
 
-
 .padre_etiqueta .etiqueta {
     width: 100%;
     height: 100%;
@@ -266,14 +382,32 @@ body {
 }
 
 .level {
-    margin-top: 30px;
+    margin-top: 50px;
     text-align: center;
     font-size: 22px;
-    color: #61a49a;
+    color: #faa531;
+    font-weight: 500;
 }
 
-.bonotes_portadas {
+.bonotes_portada {
     width: 100%;
+}
+
+.bonotes_portada .boton .btn:hover .triangulo {
+    opacity: 1;
+}
+
+.triangulo {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-bottom: 20px solid #61a49a;
+    border-right: 10px solid transparent;
+    margin: 0 auto;
+    opacity: 0;
+    margin-top: 0px;
+    position: absolute;
+    top: 100%;
 }
 
 
@@ -281,25 +415,6 @@ body {
 
 
 
-.padre_muro {
-    width: 100vw;
-    height: 45px;
-    top: 0px;
-    right: 100%;
-}
-
-.padre_muro.muro_derecho {
-    right: 0%;
-    left: 100%
-}
-
-.padre_muro .muro {
-    width: 100%;
-    height: 100%;
-    background-size: contain;
-    background-position: center center;
-
-}
 
 .padre_portada {
     width: 600px;
@@ -314,29 +429,16 @@ body {
     background-repeat: no-repeat;
 }
 
-.bonotes_portadas .btn {
+/* .bonotes_portadas .btn {
     color: #fff;
     font-size: 24px;
-}
+} */
 
-.bonotes_portadas .btn:hover {
+/* .bonotes_portadas .btn:hover {
     color: #61a49a;
     font-size: 24px;
-}
+} */
 
-.bonotes_portadas .btn:hover .triangulo {
-    opacity: 1;
-}
-
-.triangulo {
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-bottom: 20px solid #61a49a;
-    border-right: 10px solid transparent;
-    margin: 0 auto;
-    opacity: 0;
-}
 
 
 /* --- footer ---- */
@@ -356,6 +458,17 @@ footer p {
     padding: 20px;
 }
 
+footer p span{
+    color: #61a49a;
+}
+
+footer p span:nth-child(even){
+    color: #faa531;
+}
+
+
+
+
 /* ----------------------
 ---------- FIN PORTADA --------
 ------------------------ */
@@ -369,6 +482,8 @@ header {
     line-height: 0px;
     font-size: 0px;
 }
+
+
 
 /* --- Game Name --- */
 .game_name {
@@ -385,6 +500,26 @@ header {
     align-items: center;
 }
 
+.padre_muro {
+    width: 100vw;
+    height: 45px;
+    top: 0px;
+    right: 100%;
+}
+
+.padre_muro.muro_derecho {
+    right: 0%;
+    left: 100%
+}
+
+.padre_muro .muro {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center center;
+    opacity: 0.1;
+
+}
 /* --- Fin Game Name --- */
 
 /* ----------------------
@@ -420,10 +555,16 @@ main.interior {
 /* -- fin row -- */
 
 /*  --- Labyrinth --- */
+.fondo_tablero {
+    position: relative;
+    -webkit-box-shadow: 6px 9px 7px 2px rgb(0 0 0 / 23%);
+    box-shadow: 6px 9px 7px 2px rgb(0 0 0 / 23%);
+}
 #labyrinth {
     /* width: 430px; */
     /* height: 430px; */
     /* border: 1px solid red; */
+   
 }
 
 .arraybox {
@@ -432,6 +573,8 @@ main.interior {
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    top: 5px;
+    position: relative;
 }
 
 .wall {
@@ -502,6 +645,9 @@ main.interior {
     background-color: rgba(135, 147, 255, 0.2);
     padding: 20px 0px;
     margin-bottom: 30px;
+    background-color: rgb(250 165 49 / 63%);
+    -webkit-box-shadow: 6px 9px 7px 2px rgb(0 0 0 / 23%);
+    box-shadow: 6px 9px 7px 2px rgb(0 0 0 / 23%);
 }
 
 .record-score .centrado {
@@ -527,6 +673,8 @@ main.interior {
     background-color: rgba(135, 147, 255, 0.2);
     padding: 20px 0px;
     margin-bottom: 30px;
+    -webkit-box-shadow: 6px 9px 7px 2px rgb(0 0 0 / 23%);
+    box-shadow: 6px 9px 7px 2px rgb(0 0 0 / 23%);
 }
 
 .time-score .centrado {
@@ -566,6 +714,8 @@ main.interior {
 .controls {
     background-color: rgba(135, 147, 255, 0.2);
     padding: 20px 0px;
+    -webkit-box-shadow: 6px 9px 7px 2px rgb(0 0 0 / 23%);
+    box-shadow: 6px 9px 7px 2px rgb(0 0 0 / 23%);
 }
 
 .caja_control {
@@ -710,6 +860,7 @@ main.interior {
 .base-timer__path-remaining.green {
     color: rgb(65, 184, 131);
     color: rgb(56 224 213);
+    /* color: #61a49a; */
 }
 
 .base-timer__path-remaining.orange {
@@ -736,190 +887,61 @@ main.interior {
 /* - -- - -- - -- - -- - -- 
 -- - Fin Estilo temporizador - --
 - -- - -- - -- - -- - -- - */
-
-/* - -- - -- - -- - -- - -- 
--- - Estilo botones - --
-- -- - -- - -- - -- - -- - */
-/* Original */
-.boton .btn {
-    width: 200px;
-    height: 50px;
-    border: 0px solid #004a9d;
-    color: #fff;
-    font-size: 18px;
-    font-family: "Open Sans";
-    font-weight: 400;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    border-radius: 24px;
-    background: #ff3390;
-}
-
-/*
-.boton.color_blanco {
-text-align: center;
-}
-
-.boton.color_blanco .btn{
-color: #fff;
-border: 1px solid #fff;
-}
-*/
-
-/* Botón Banner */
-.banner .boton {
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 20px;
-}
-
-.zona_destacada .boton {
-    text-align: center;
-}
-
-/* Botón Menú */
-.navbar .boton {
-    margin-left: 34px;
-    position: relative;
-    /* z-index: 30; */
-    float: right;
-    height: 114px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.barra_reducida .navbar .boton {
-    height: 104px;
-}
-
-.boton .btn img {
-    height: 35px;
-    margin-right: 12px;
-}
-
-.barra_reducida .boton .btn img {
-    height: 30px;
-    margin-right: 12px;
-}
-
-.boton.boton_menu .btn {
-    width: 282px;
-    height: 62px;
-    color: #fff;
-    background: #ff5837;
-    border: 0;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-family: "Montserrat", sans-serif;
-    text-transform: uppercase;
-    font-weight: 500;
-    border-radius: 20px;
-    white-space: normal;
-    text-align: left;
-}
-
-.barra_reducida .boton.boton_menu .btn {
-    width: 270px;
-    height: 57px;
-    font-size: 13px;
-}
-
-/* Botón Parallax */
-.zona_destacado .boton.boton_menu .btn {
-    width: 405px;
-    height: 48px;
-}
-
-.zona_destacado .boton .btn img {
-    height: 25px;
-}
-
-/* Efecto del botón - Shutter Out Horizontal */
-.hvr-shutter-out-horizontal {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    position: relative;
-    background: #e1e1e1;
-    -webkit-transition-property: color;
-    transition-property: color;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-}
-
-.hvr-shutter-out-horizontal:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
+.modal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
     top: 0;
-    bottom: 0;
     left: 0;
-    right: 0;
-    background: #0296d1;
-    border-radius: 24px;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transform-origin: 50%;
-    transform-origin: 50%;
-    -webkit-transition-property: transform;
-    transition-property: transform;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
+    background-color: rgb(0 0 0 / 70%);
+    opacity: 0;
+    transition: opacity .15s linear;
+    z-index: -1;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+ .caja_modal {
+    text-align: center;
+    /* border: 1px solid red; */
 }
 
-.boton.boton_menu .hvr-shutter-out-horizontal:before {
-    border-radius: 20px;
-    background: #004a9d;
-}
-
-.zona_destacado .boton.boton_menu .hvr-shutter-out-horizontal:before {
-    background: #5780bc;
-}
-
-.boton.color_blanco .hvr-shutter-out-horizontal:before {
-    background: #fff;
-}
-
-/*
-.banner .boton .hvr-shutter-out-horizontal:before {
-background: #fff;
-}
-*/
-
-.hvr-shutter-out-horizontal:hover,
-.hvr-shutter-out-horizontal:focus,
-.hvr-shutter-out-horizontal:active {
+  .modal h2{
+    font-size: 36px;
     color: #fff;
+    font-family: "NeonLedLight";
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 30px;
 }
 
-/*
-.banner .boton .hvr-shutter-out-horizontal:hover,
-.boton.color_blanco .hvr-shutter-out-horizontal:hover,
-.banner .boton .hvr-shutter-out-horizontal:focus, 
-.boton.color_blanco .hvr-shutter-out-horizontal:focus, 
-.banner .boton .hvr-shutter-out-horizontal:active,
-.boton.color_blanco .hvr-shutter-out-horizontal:active {
-color: #004a9d;
-}
-*/
-
-.hvr-shutter-out-horizontal:hover:before,
-.hvr-shutter-out-horizontal:focus:before,
-.hvr-shutter-out-horizontal:active:before {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
+.modal-inner{
+width: 600px;
+height: 600px;
+background-color: rgba(31, 41, 55, 0.9);
+padding: 40px;
 }
 
-/* - -- - -- - -- - -- - -- 
--- - Fin Estilo botones - --
-- -- - -- - -- - -- - -- - */
+.modal-inner .fondo{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0.1;
+}
+
+  .modal.open{
+    opacity: 1;
+    z-index: 999;
+  }
+
+
 
 /* -- circulos -- */
 .wrapper-flex,

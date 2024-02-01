@@ -36,43 +36,6 @@
 <body>
     <div class="fondo" style="background-image:url(images/fondo_puntitos.png)"></div>
 
-    <!-- Modal HTML -->
-    <!-- <div id="myModal" class="modal sonido_web fade">
-        <div class="modal-dialog modal-login">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">¿Quieres activar el sonido?</h4> -->
-                    <!--                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
-               <!-- </div>
-
-                 <div class="modal-body">
-                    <audio id="musica1" autoplay>
-                        <source src="audio/Portada.mp3" type="audio/mpeg">
-                    </audio>
-
-                    <button onclick="PlayAudio()" data-dismiss="modal" class="hvr-shutter-out-horizontal">Reproducir</button>
-                    <button onclick="PauseAudio()" data-dismiss="modal" class="hvr-shutter-out-horizontal">Pausar</button> -->
-                    <!--
-<button type="button" id="playBtn" class="btn close btn-info" data-dismiss="modal">Si</button>
-
-<button type="button" id="pauseBtn" class="btn close btn-info" data-dismiss="modal">No</button>
--->
-                <!-- </div>
-
-                <div class="modal-footer">Activa y desactiva el sonido en el botón lateral de sonido <i class="fa fa-volume-up" aria-hidden="true"></i></div>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- <div class="red  animacion_2">
-    <a href="#myModal" class="trigger-btn" data-toggle="modal">
-        <span>Sonido</span>
-        <div class="imagen_red centrado">
-            <i class="fa fa-volume-up" aria-hidden="true"></i>
-        </div>
-    </a>
-</div> -->
-
 
     <header class="caja">
         <div class="game_name centrado">
@@ -101,22 +64,60 @@
             <div class="container">
                 <div class="row row-eq-height">
                     <div class="col-md-9 centrado">
+                        <div class="fondo_tablero fadeInLeft" data-wow-duration="2s" data-wow-delay="0.6s">
                         <div id="labyrinth"></div>
                     </div>
+                    </div>
+
+                    <div class="modal" id="modal-win">
+                        <div class="modal-inner relative centrado">
+                            <div class="fondo" style="background-image:url(images/fondo_puntitos.png)"></div>
+<div class="caja_modal">
+                          <h2>You Win!</h2>
+                         
+                            <div class="boton">
+                                <a href="portada.html" class="">
+                                    <div class="btn btn-default relative animacion">
+                                        Try Again 
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        </div>
+                      </div> 
+
+                      <div class="modal" id="modal-gameOver">
+                        <div class="modal-inner relative centrado">
+                            <div class="fondo" style="background-image:url(images/fondo_puntitos.png)"></div>
+                            <div class="caja_modal">
+                          <h2>Game Over!</h2>
+                         
+                            <div class="boton">
+                                <a href="index.html" class="">
+                                    <div class="btn btn-default relative animacion">
+                                        Try Again 
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        </div>
+                      </div> 
+
+                    
 
                     <div class="col-md-3 centrado">
                         <div class="information">
-                            <div class="record-score">
+                            <div class="record-score wow fadeIn" data-wow-duration="2s" data-wow-delay="0.3s">
                                 <h3>High Score</h3>
                                 <div class="centrado">
                                     <div class="trofeo">
                                         <img src="images/trofeo.png" alt="" />
                                     </div>
-                                    <div class="puntuacion">---</div>
+                                    <div class="puntuacion">0</div>
                                 </div>
                             </div>
 
-                            <div class="time-score">
+                            <div class="time-score wow fadeIn" data-wow-duration="2s" data-wow-delay="0.6s">
                                 <h3>Time Score</h3>
                                 <div class="centrado">
                                     <div class="temporizador">
@@ -128,7 +129,7 @@
                                 </div>
                             </div>
 
-                            <div class="controls">
+                            <div class="controls wow fadeIn" data-wow-duration="2s" data-wow-delay="0.9s">
                                 <h3>Controls</h3>
 
                                 <div class="controles">
@@ -162,11 +163,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="myModal" class="modal sonido_web fade">
-                                    <div class="modal-dialog modal-login">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">¿Quieres activar el sonido?</h4>
+                        
     </main>
 
     <footer></footer>
